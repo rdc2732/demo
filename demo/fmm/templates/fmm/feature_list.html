@@ -1,0 +1,45 @@
+{% extends 'fmm/base.html' %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        {% block content %}
+            <h2>Feature Model Master</h2>
+            <table class="table table-hover">
+                <tr>
+                    <th>Group</th>
+                    <th>Function</th>
+                    <th>Feature</th>
+                    <th>Dependency</th>
+                </tr>
+                {% for feature in object_list %}
+                <tr class="table-success">
+                    <td>{{ feature.group }}</td>
+                    <td>{{ feature.function }}</td>
+                    <td>{{ feature.name }}</td>
+                    <td>
+                        {% for dep in feature.dependency.all %}
+                            {{dep.name}}<br>
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endblock %}
+    </body>
+</html>
+
+
+
+    <!--group = models.CharField(max_length=50, blank=True)-->
+    <!--function = models.CharField(max_length=50, blank=True)-->
+    <!--feature_name = models.CharField(max_length=100, blank=True)-->
+    <!--name = models.CharField(max_length=50, blank=True) # keyword or feature-->
+    <!--rule_type = models.CharField(max_length=15, blank=True, choices=RULE_TYPES)-->
+    <!--option_min = models.IntegerField(blank=True, null=True)-->
+    <!--option_max = models.IntegerField(blank=True, null=True)-->
+    <!--enabled = models.NullBooleanField(default=False)-->
+    <!--selected = models.NullBooleanField(default=False)-->
+    <!--dependency = models.ManyToManyField('self', related_name='dependent', symmetrical=False)-->
+    <!--completed = models.BooleanField(default=False)-->

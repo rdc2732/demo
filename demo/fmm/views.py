@@ -4,10 +4,14 @@ from fmm.models import Feature
 
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import ListView
 
 # Create your views here.
 def index(request):
     return HttpResponse(u"You're looking at the demo/fmm home page.")
+
+class FeatureList(ListView):
+    queryset = Feature.objects.prefetch_related().all()
 
 
 def loadfmm(request):

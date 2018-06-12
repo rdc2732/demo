@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'fmm',
+    'bootstrap3',
+    'bootstrap_themes',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
